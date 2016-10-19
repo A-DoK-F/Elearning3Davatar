@@ -8,21 +8,45 @@
     <style>
         html, body {
             overflow: hidden;
+            position: absolute;
+            display : flex;
             width   : 100%;
             height  : 100%;
             margin  : 0;
             padding : 0;
+            background-color: blue;
         }
 
         #renderCanvas {
-            width   : 20%;
-            height  : 30%;
+            width   : 20vw;
+            height  : 30vh;
             touch-action: none;
         }
+        #mainDiv {
+          width: 100vw;
+          height: 100vh;
+          background-color: grey;
+          margin: 5px;
+        }
+
+        #subDiv {
+          width   : 20vw;
+          height  : 100vh;
+        }
+
+        #text {
+          width   : 20vw;
+          height  : 80vh;
+          background-color: yellow;
+        }
+
     </style>
 </head>
 <body>
+    <div id="subDiv">
     <canvas id="renderCanvas"></canvas>
+    <div id="text"> Welcome to Megalearning</div></div>
+    <div id="mainDiv"> </div>
     <script type="text/javascript">
     if (BABYLON.Engine.isSupported()) {
         var canvas = document.getElementById("renderCanvas");
@@ -54,16 +78,16 @@
     }
 </script>
 
-<script src="http://code.responsivevoice.org/responsivevoice.js">
+<!--<script src="http://code.responsivevoice.org/responsivevoice.js">
     //var u = new SpeechSynthesisUtterance();
     //u.text = 'Welcome to Megalearning';
   //  u.lang = 'en-US';
   //  u.rate = 0.5;
     //u.onend = function(event) { alert('Finished in ' + event.elapsedTime + ' seconds.'); }
   //  speechSynthesis.speak(u);*/
-  responsiveVoice.speak("hello world", "UK English Male", {onstart: StartCallback, onend: EndCallback});
+  responsiveVoice.speak("Welcome to Megalearning", "UK English Male", {onstart: StartCallback, onend: EndCallback});
 
- </script>
+</script>-->
 
 </body>
 </html>
