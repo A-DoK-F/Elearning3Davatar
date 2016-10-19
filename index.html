@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>Babylon - Getting Started</title>
+    <!-- link to the last version of babylon -->
+    <script src="http://cdn.babylonjs.com/2-4/babylon.js"></script>
+    <style>
+        html, body {
+            overflow: hidden;
+            width   : 100%;
+            height  : 100%;
+            margin  : 0;
+            padding : 0;
+        }
+
+        #renderCanvas {
+            width   : 20%;
+            height  : 30%;
+            touch-action: none;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="renderCanvas"></canvas>
+    <script type="text/javascript">
+    if (BABYLON.Engine.isSupported()) {
+        var canvas = document.getElementById("renderCanvas");
+        var engine = new BABYLON.Engine(canvas, true);
+
+        BABYLON.SceneLoader.Load("", "scene.babylon", engine, function (newScene) {
+            // Wait for textures and shaders to be ready
+            newScene.executeWhenReady(function () {
+                // Attach camera to canvas inputs
+                //newScene.activeCamera.attachControl(canvas);
+                // Create an ArcRotateCamera aimed at 0,0,0, with no alpha, beta or radius, so be careful. It will look broken.
+                var camera = new BABYLON.ArcRotateCamera("ArcRotateCamera", 5, 1.5, 0.7, new BABYLON.Vector3(0, 1.6, 0), newScene);
+
+                // Quick, let's use the setPosition() method... with a common Vector3 position, to make our camera better aimed.
+                camera.attachControl(canvas);
+                newScene.activeCamera = camera;
+                //newScene.activeCamera.attachControl(canvas);
+                //newScene.camera.attachControl(canvas, noPreventDefault, useCtrlForPanning);
+
+                // Once the scene is loaded, just register a render loop to render it
+                engine.runRenderLoop(function() {
+                    newScene.render();
+
+                });
+            });
+        }, function (progress) {
+            // To do: give progress feedback to user
+        });
+    }
+</script>
+
+<script src="http://code.responsivevoice.org/responsivevoice.js">
+    //var u = new SpeechSynthesisUtterance();
+    //u.text = 'Welcome to Megalearning';
+  //  u.lang = 'en-US';
+  //  u.rate = 0.5;
+    //u.onend = function(event) { alert('Finished in ' + event.elapsedTime + ' seconds.'); }
+  //  speechSynthesis.speak(u);*/
+  responsiveVoice.speak("hello world", "UK English Male", {onstart: StartCallback, onend: EndCallback});
+
+ </script>
+
+</body>
+</html>
